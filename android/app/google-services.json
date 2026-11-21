@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "601671229708",
+    "project_id": "herbacat-9ae22",
+    "storage_bucket": "herbacat-9ae22.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:601671229708:android:ad26d6334796ea1a0e6929",
+        "android_client_info": {
+          "package_name": "com.example.herbacat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAt9llOQcSpAI0fv6eBTH8Tk3yhR_CVBz4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

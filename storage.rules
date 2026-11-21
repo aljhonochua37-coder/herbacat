@@ -1,0 +1,35 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.admin == true ||
+        firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.get('role', '') in ['admin', 'administrator']
+      );
+    }
+
+    // Herb and botanical specimen photography
+    match /herbs/{imageId} {
+      allow read: if true;
+      // Only users with role == 'admin' can upload or delete herb images
+      allow write, delete: if isAdmin();
+    }
+
+    // Recipe and preparation guides imagery
+    match /recipes/{imageId} {
+      allow read: if true;
+      allow write, delete: if isAdmin();
+    }
+
+    // User profile avatars
+    match /users/{userId}/{fileName} {
+      allow read: if true;
+      allow write: if isAuthenticated() && request.auth.uid == userId;
+    }
+  }
+}
